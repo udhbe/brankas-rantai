@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1220">
+<title>TaxPilot — Kalkulator Pajak Trader</title>
+<style>
+:root{--bg:#0b1220;--panel:#111c2e;--panel2:#17243a;--line:#293b55;--txt:#edf4ff;--muted:#9eb0c9;--mint:#78e4c1;--blue:#8eb4ff;--gold:#f0c879;--red:#ff9b9b}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 20% -10%,#203a5b 0,transparent 43%),var(--bg);color:var(--txt);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}button,input,select{font:inherit}button{cursor:pointer}.shell{max-width:1180px;margin:auto;padding:25px 18px 50px}.header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px}.brand{display:flex;gap:13px;align-items:center}.mark{height:48px;width:48px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(140deg,var(--mint),var(--blue));color:#091321;font-size:23px;font-weight:950;box-shadow:0 8px 28px #78e4c122}.overline{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mint);font-weight:850}h1{font-size:clamp(25px,4vw,34px);line-height:1.12;margin:3px 0}h2{font-size:17px;margin:0 0 15px}h3{font-size:14px;margin:0 0 10px}.sub{color:var(--muted);margin:5px 0 0}.pill{border:1px solid #36506c;border-radius:999px;padding:7px 11px;color:var(--muted);font-size:12px;white-space:nowrap}.nav{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}.tab{background:transparent;border:1px solid var(--line);border-radius:11px;color:var(--muted);padding:9px 14px}.tab.active{background:var(--panel2);color:var(--txt);border-color:#50759b}.grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);gap:17px}.panel{background:linear-gradient(155deg,#142137f5,#101a2bf5);border:1px solid var(--line);border-radius:19px;padding:21px;box-shadow:0 14px 45px #0002;min-width:0}.sectionhead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:13px}.tag{font-size:11px;font-weight:800;color:var(--mint);background:#78e4c114;border:1px solid #78e4c12c;border-radius:8px;padding:4px 7px}.field{margin:13px 0}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:6px}.hint{font-size:11px;color:var(--muted);display:block;margin-top:5px;font-weight:400}.control{width:100%;padding:11px 12px;background:#0a1424;color:var(--txt);border:1px solid #31445f;border-radius:10px;outline:none}.control:focus{border-color:var(--mint);box-shadow:0 0 0 3px #78e4c11a}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.btn{border:1px solid #3a506e;background:#1b2b42;color:var(--txt);border-radius:10px;padding:10px 13px;font-weight:750}.btn:hover{filter:brightness(1.12)}.primary{background:var(--mint);color:#081b1a;border-color:transparent}.secondary{background:transparent}.danger{color:#ffc1c1;border-color:#70404c;background:#301e2b}.actions{display:flex;gap:9px;flex-wrap:wrap}.actions .btn{flex:1}.big{padding:18px;border-radius:15px;background:linear-gradient(125deg,#183f45,#1c3153);border:1px solid #345a69;margin-bottom:13px}.big .caption{font-size:12px;color:#c2d9e9}.big .amount{font-size:clamp(27px,4vw,35px);font-weight:900;color:var(--mint);letter-spacing:-.03em;overflow-wrap:anywhere;margin-top:4px}.metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}.metric{background:#0c1728;border:1px solid #253750;border-radius:12px;padding:12px;min-width:0}.metric span{display:block;font-size:11px;color:var(--muted)}.metric b{display:block;font-size:16px;margin-top:4px;overflow-wrap:anywhere}.rows{border-top:1px solid var(--line)}.rowline{display:flex;justify-content:space-between;gap:15px;padding:10px 0;border-bottom:1px solid #25354d;font-size:13px}.rowline span{color:var(--muted)}.rowline b{text-align:right;overflow-wrap:anywhere}.notice{border:1px solid #6b5834;background:#2c261b;color:#f3dfb6;border-radius:12px;padding:12px 14px;font-size:12px;margin-top:14px}.goodnote{border:1px solid #2d6658;background:#122b2b;color:#c8f7e7;border-radius:12px;padding:12px 14px;font-size:12px;margin-top:14px}.full{grid-column:1/-1}.hidden{display:none!important}.tablewrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:13px;min-width:650px}th,td{text-align:left;padding:11px 10px;border-bottom:1px solid var(--line);white-space:nowrap}th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.05em}td.num,th.num{text-align:right}.empty{text-align:center;color:var(--muted);padding:25px 10px}.mini{font-size:11px;color:var(--muted)}.footer{color:var(--muted);font-size:11px;margin-top:18px}.bracketgrid{display:grid;grid-template-columns:1.3fr .7fr;gap:10px}.bracketrow{display:grid;grid-template-columns:1.3fr .7fr;gap:10px;align-items:center;margin:9px 0}.bracketrow label{font-size:12px;color:var(--muted)}.bracketrow input{min-width:0}.exportbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.exportbar .btn{flex:0 1 auto}.check{display:flex;gap:8px;align-items:flex-start;color:var(--muted);font-size:12px;margin-top:10px}.check input{margin-top:4px}
+@media(max-width:780px){.grid{grid-template-columns:1fr}.full{grid-column:auto}.header{align-items:flex-start;flex-direction:column}.metrics{grid-template-columns:1fr 1fr}.panel{padding:16px}.shell{padding:18px 12px 35px}}
+@media print{body{background:white;color:#111}.shell{max-width:none;padding:0}.header,.nav,.inputpanel,.exportbar,.no-print,.footer{display:none!important}.grid{display:block}.panel,.big,.metric{background:white;color:#111;border:1px solid #bbb;box-shadow:none;margin-bottom:12px}.big .caption,.big .amount,.metric span,.metric b,.rowline span{color:#111}.notice,.goodnote{background:white;color:#111;border-color:#aaa}.panel h2{color:#111}.rowline{border-color:#ddd}table{min-width:0}th,td{white-space:normal}}
+</style>
+</head>
+<body>
+<main class="shell">
+<header class="header">
+ <div class="brand"><div class="mark">T</div><div><div class="overline">Personal tax workspace</div><h1>TaxPilot <span style="color:var(--mint)">Trader</span></h1><p class="sub">Kalkulator pajak tahunan · Indonesia</p></div></div>
+ <div class="pill">● Lokal di perangkat · tanpa akun</div>
+</header>
+<nav class="nav no-print">
+ <button class="tab active" data-tab="calc">Kalkulator</button><button class="tab" data-tab="history">Riwayat</button><button class="tab" data-tab="settings">Pengaturan pajak</button>
+</nav>
+<section id="tab-calc" class="grid">
+ <div class="panel inputpanel">
+  <div class="sectionhead"><h2>Data penghasilan</h2><span class="tag">01 / INPUT</span></div>
+  <div class="two">
+   <div class="field"><label for="year">Tahun pajak</label><select class="control" id="year"><option>2026</option><option>2025</option><option>2024</option><option>2023</option></select></div>
+   <div class="field"><label for="ptkp">Status PTKP</label><select class="control" id="ptkp">
+    <option value="54000000">TK/0 — Rp54 juta</option><option value="58500000">TK/1 atau K/0 — Rp58,5 juta</option><option value="63000000">TK/2 atau K/1 — Rp63 juta</option><option value="67500000">TK/3 atau K/2 — Rp67,5 juta</option><option value="72000000">K/3 — Rp72 juta</option><option value="112500000">K/I/0 — Rp112,5 juta</option><option value="117000000">K/I/1 — Rp117 juta</option><option value="121500000">K/I/2 — Rp121,5 juta</option><option value="126000000">K/I/3 — Rp126 juta</option>
+   </select></div>
+  </div>
+  <div class="field"><label for="salary">Penghasilan neto dari gaji setahun (Rp)</label><input class="control money" id="salary" type="number" min="0" step="1000" value="0"><span class="hint">Gunakan angka neto setahun yang relevan untuk SPT, bukan otomatis gaji bulanan × 12 jika ada komponen lain.</span></div>
+  <div class="field"><label for="trade">Laba/rugi trading bersih setahun (Rp)</label><input class="control money" id="trade" type="number" step="1000" value="0"><span class="hint">Masukkan hasil bersih sesuai catatan dan perlakuan pajak instrumen. Angka negatif ditampilkan sebagai rugi; perlakuan pengurangannya perlu ditentukan sesuai aturan.</span></div>
+  <div class="two">
+   <div class="field"><label for="deposit">Total deposit modal (Rp)</label><input class="control money" id="deposit" type="number" min="0" step="1000" value="0"></div>
+   <div class="field"><label for="withdraw">Total penarikan (Rp)</label><input class="control money" id="withdraw" type="number" min="0" step="1000" value="0"></div>
+  </div>
+  <div class="field"><label for="credit">Pajak yang sudah dipotong/dibayar dan dapat dikreditkan (Rp)</label><input class="control money" id="credit" type="number" min="0" step="1000" value="0"><span class="hint">Isi hanya kredit pajak yang sah dan relevan; jangan masukkan pajak final di sini kecuali perlakuannya memang dapat dikreditkan.</span></div>
+  <div class="field"><label for="notes">Catatan (opsional)</label><input class="control" id="notes" maxlength="120" placeholder="Contoh: gaji + hasil trading tahun ini"></div>
+  <div class="actions"><button class="btn primary" id="save">Simpan ke riwayat</button><button class="btn secondary" id="clear">Kosongkan input</button></div>
+  <div class="mini" style="margin-top:10px">Deposit dan penarikan ditampilkan untuk rekonsiliasi saja; tidak otomatis mengurangi laba kena pajak.</div>
+ </div>
+ <div class="panel">
+  <div class="sectionhead"><h2>Ringkasan estimasi</h2><span class="tag">02 / HASIL</span></div>
+  <div class="big"><div class="caption">Estimasi PPh progresif sebelum kredit pajak</div><div class="amount" id="tax">Rp0</div></div>
+  <div class="metrics">
+   <div class="metric"><span>Penghasilan neto simulasi</span><b id="net">Rp0</b></div>
+   <div class="metric"><span>PKP</span><b id="pkp">Rp0</b></div>
+   <div class="metric"><span>PTKP</span><b id="ptkpVal">Rp54.000.000</b></div>
+   <div class="metric"><span>Estimasi setelah kredit</span><b id="afterCredit">Rp0</b></div>
+  </div>
+  <h3>Rincian tarif progresif</h3>
+  <div class="rows">
+   <div class="rowline"><span>Lapisan 5%</span><b id="b1">Rp0</b></div><div class="rowline"><span>Lapisan 15%</span><b id="b2">Rp0</b></div><div class="rowline"><span>Lapisan 25%</span><b id="b3">Rp0</b></div><div class="rowline"><span>Lapisan 30%</span><b id="b4">Rp0</b></div><div class="rowline"><span>Lapisan 35%</span><b id="b5">Rp0</b></div>
+  </div>
+  <div class="notice"><b>Perhatian:</b> Ini estimasi pendidikan, bukan penetapan pajak. Gaji dan laba trading tidak selalu bisa dijumlahkan mentah-mentah untuk skema progresif yang sama. Penghasilan final, sumber luar negeri, instrumen dan aturan khusus bisa memiliki perlakuan berbeda.</div>
+ </div>
+ <div class="panel full">
+  <div class="sectionhead"><h2>Rumus kalkulator</h2><span class="tag">RINGKAS</span></div>
+  <div class="two"><div><p class="mini">Neto simulasi</p><b>Gaji neto + laba/rugi trading yang diasumsikan masuk skema umum</b></div><div><p class="mini">PKP simulasi</p><b>Maksimum(0, neto − PTKP), dibulatkan ke bawah ke ribuan rupiah penuh</b></div></div>
+  <p class="mini" style="margin-top:12px">Tarif, batas lapisan dan PTKP bisa disesuaikan melalui tab Pengaturan Pajak. Simpan salinan CSV untuk arsip; riwayat di tab ini tersimpan pada browser/perangkat yang sama.</p>
+ </div>
+</section>
+<section id="tab-history" class="panel hidden">
+ <div class="sectionhead"><div><h2>Riwayat perhitungan</h2><p class="sub">Riwayat tersimpan di browser ini saja.</p></div><span class="tag" id="count">0 DATA</span></div>
+ <div class="exportbar"><button class="btn primary" id="exportCsv">Ekspor CSV</button><button class="btn" id="exportJson">Cadangkan JSON</button><button class="btn" id="print">Cetak / Simpan PDF</button><button class="btn danger" id="deleteAll">Hapus semua riwayat</button></div>
+ <div class="tablewrap"><table><thead><tr><th>Tanggal</th><th>Tahun</th><th>Catatan</th><th class="num">Neto</th><th class="num">PKP</th><th class="num">PPh</th><th>Aksi</th></tr></thead><tbody id="historyRows"></tbody></table></div>
+ <p class="mini">Untuk PDF, pilih tombol “Cetak / Simpan PDF”, lalu pilih “Save as PDF / Simpan sebagai PDF” di jendela cetak browser.</p>
+</section>
+<section id="tab-settings" class="panel hidden">
+ <div class="sectionhead"><div><h2>Pengaturan pajak</h2><p class="sub">Atur ambang tarif dan persentase untuk simulasi. Tidak menggantikan aturan resmi.</p></div><span class="tag">ADVANCED</span></div>
+ <div class="two">
+  <div class="field"><label for="customPtkp">PTKP kustom (Rp)</label><input class="control" id="customPtkp" type="number" min="0" step="500000" value="54000000"><span class="hint">Terapkan dengan memilih “PTKP kustom” pada pilihan status di kalkulator.</span></div>
+  <div class="field"><label for="rounding">Pembulatan PKP</label><select class="control" id="rounding"><option value="1000">Ke bawah ke ribuan rupiah</option><option value="1">Tanpa pembulatan</option></select></div>
+ </div>
+ <h3>Batas atas lapisan (Rp) dan tarif (%)</h3>
+ <p class="mini">Batas atas lapisan 5 tarif. Tarif di atas batas terakhir berlaku pada kelebihan dari batas tersebut.</p>
+ <div class="bracketrow"><label>Lapisan 1 — batas atas</label><input class="control" id="lim1" type="number" value="60000000"></div>
+ <div class="bracketrow"><label>Lapisan 1 — tarif (%)</label><input class="control" id="rate1" type="number" value="5" step=".1"></div>
+ <div class="bracketrow"><label>Lapisan 2 — batas atas</label><input class="control" id="lim2" type="number" value="250000000"></div>
+ <div class="bracketrow"><label>Lapisan 2 — tarif (%)</label><input class="control" id="rate2" type="number" value="15" step=".1"></div>
+ <div class="bracketrow"><label>Lapisan 3 — batas atas</label><input class="control" id="lim3" type="number" value="500000000"></div>
+ <div class="bracketrow"><label>Lapisan 3 — tarif (%)</label><input class="control" id="rate3" type="number" value="25" step=".1"></div>
+ <div class="bracketrow"><label>Lapisan 4 — batas atas</label><input class="control" id="lim4" type="number" value="5000000000"></div>
+ <div class="bracketrow"><label>Lapisan 4 — tarif (%)</label><input class="control" id="rate4" type="number" value="30" step=".1"></div>
+ <div class="bracketrow"><label>Lapisan 5 — tarif (%)</label><input class="control" id="rate5" type="number" value="35" step=".1"></div>
+ <div class="actions" style="margin-top:18px"><button class="btn primary" id="applySettings">Terapkan pengaturan</button><button class="btn" id="defaultSettings">Kembalikan default</button></div>
+ <div class="goodnote">Pengaturan disimpan lokal pada browser. Periksa aturan untuk tahun pajak yang dipilih sebelum menggunakan hasil dalam pelaporan.</div>
+ <p class="mini">Rujukan awal: <a href="https://www.pajak.go.id/id/mekanisme-penghitungan-pajak-penghasilan-orang-pribadi" target="_blank" rel="noopener">DJP — Mekanisme Penghitungan PPh Orang Pribadi</a> · <a href="https://pajak.go.id/id/penghasilan-tidak-kena-pajak" target="_blank" rel="noopener">DJP — PTKP</a> · <a href="https://kalkulator.pajak.go.id/" target="_blank" rel="noopener">Kalkulator resmi DJP</a>.</p>
+</section>
+<footer class="footer">TaxPilot Trader · Prototype lokal. Tidak mengirim data ke server. Hindari memasukkan NIK, NPWP, kata sandi, atau informasi sensitif ke catatan.</footer>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const fmt=n=>new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(Math.round(Number(n)||0));
+const num=id=>Number($(id).value)||0;
+const STORE='taxpilot_trader_history_v1', SETTINGS='taxpilot_trader_settings_v1';
+const defaults={customPtkp:54000000,rounding:1000,lim1:60000000,rate1:5,lim2:250000000,rate2:15,lim3:500000000,rate3:25,lim4:5000000000,rate4:30,rate5:35};
+let history=[];
+try{history=JSON.parse(localStorage.getItem(STORE)||'[]');if(!Array.isArray(history))history=[]}catch(e){history=[]}
+function loadSettings(){try{const s=JSON.parse(localStorage.getItem(SETTINGS)||'{}');Object.keys(defaults).forEach(k=>{if(s[k]!==undefined)$(k).value=s[k]})}catch(e){}}
+function settings(){return Object.fromEntries(Object.keys(defaults).map(k=>[k,Number($(k).value)||0]))}
+function activePtkp(){return $('ptkp').value==='custom'?num('customPtkp'):num('ptkp')}
+function calculate(){
+ const salary=num('salary'),trade=num('trade'),ptkp=activePtkp(),credit=Math.max(0,num('credit')),s=settings();
+ // Treat trading as part of general progressive income only for this illustrative scenario.
+ const net=Math.max(0,salary+trade),pkp=Math.floor(Math.max(0,net-ptkp)/(s.rounding||1000))*(s.rounding||1000);
+ const limits=[s.lim1,s.lim2,s.lim3,s.lim4,Infinity],rates=[s.rate1,s.rate2,s.rate3,s.rate4,s.rate5].map(x=>x/100);
+ let prev=0,br=[];for(let i=0;i<5;i++){const upper=limits[i],slice=Math.max(0,Math.min(pkp,upper)-prev);br.push(slice*rates[i]);prev=upper}
+ const tax=br.reduce((a,b)=>a+b,0),after=Math.max(0,tax-credit);
+ $('tax').textContent=fmt(tax);$('net').textContent=fmt(net);$('pkp').textContent=fmt(pkp);$('ptkpVal').textContent=fmt(ptkp);$('afterCredit').textContent=fmt(after);
+ br.forEach((v,i)=>$('b'+(i+1)).textContent=fmt(v));
+ return {year:$('year').value,ptkp,salary,trade,deposit:num('deposit'),withdraw:num('withdraw'),credit,net,pkp,tax,afterCredit:after,brackets:br,notes:$('notes').value.trim(),settings:s};
+}
+function saveHistory(){try{localStorage.setItem(STORE,JSON.stringify(history))}catch(e){alert('Penyimpanan browser penuh atau tidak tersedia. Ekspor riwayat sebagai CSV/JSON.')}renderHistory()}
+function renderHistory(){
+ $('count').textContent=history.length+' DATA';const body=$('historyRows');body.innerHTML='';
+ if(!history.length){body.innerHTML='<tr><td colspan="7" class="empty">Belum ada riwayat. Isi data lalu tekan “Simpan ke riwayat”.</td></tr>';return}
+ history.slice().reverse().forEach((x,revIndex)=>{
+  const originalIndex=history.length-1-revIndex,tr=document.createElement('tr');
+  const vals=[new Date(x.savedAt).toLocaleDateString('id-ID'),x.year,x.notes||'—',fmt(x.net),fmt(x.pkp),fmt(x.tax)];
+  vals.forEach((v,i)=>{const td=document.createElement('td');td.textContent=v;if(i>=3)td.className='num';tr.appendChild(td)});
+  const td=document.createElement('td'),load=document.createElement('button');load.className='btn';load.textContent='Muat';load.addEventListener('click',()=>restore(x));const del=document.createElement('button');del.className='btn danger';del.textContent='Hapus';del.style.marginLeft='5px';del.addEventListener('click',()=>{if(confirm('Hapus catatan ini?')){history.splice(originalIndex,1);saveHistory()}});td.append(load,del);tr.appendChild(td);body.appendChild(tr);
+ });
+}
+function restore(x){$('year').value=x.year;$('salary').value=x.salary;$('trade').value=x.trade;$('deposit').value=x.deposit;$('withdraw').value=x.withdraw;$('credit').value=x.credit;$('notes').value=x.notes||'';const p=$('ptkp');let found=[...p.options].some(o=>Number(o.value)===Number(x.ptkp));if(found)p.value=String(x.ptkp);else{p.value='custom';$('customPtkp').value=x.ptkp}calculate();showTab('calc')}
+function showTab(name){document.querySelectorAll('[id^="tab-"]').forEach(x=>x.classList.add('hidden'));$('tab-'+name).classList.remove('hidden');document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===name));if(name==='history')renderHistory()}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
+$('ptkp').addEventListener('change',()=>{if($('ptkp').value==='custom')$('customPtkp').focus();calculate()});
+document.querySelectorAll('.money,#year,#customPtkp,#rounding,#lim1,#rate1,#lim2,#rate2,#lim3,#rate3,#lim4,#rate4,#rate5').forEach(x=>x.addEventListener('input',calculate));
+$('save').addEventListener('click',()=>{const result=calculate();history.push({...result,savedAt:new Date().toISOString()});saveHistory();alert('Perhitungan disimpan ke riwayat lokal.')});
+$('clear').addEventListener('click',()=>{['salary','trade','deposit','withdraw','credit'].forEach(id=>$(id).value=0);$('notes').value='';calculate()});
+$('applySettings').addEventListener('click',()=>{const s=settings();if(!(s.lim1>0&&s.lim2>s.lim1&&s.lim3>s.lim2&&s.lim4>s.lim3)){alert('Batas lapisan harus naik berurutan dan lebih besar dari nol.');return}for(let i=1;i<=5;i++){if(s['rate'+i]<0||s['rate'+i]>100){alert('Tarif harus antara 0 sampai 100%.');return}}try{localStorage.setItem(SETTINGS,JSON.stringify(s))}catch(e){}calculate();alert('Pengaturan diterapkan dan disimpan lokal.')});
+$('defaultSettings').addEventListener('click',()=>{Object.entries(defaults).forEach(([k,v])=>$(k).value=v);try{localStorage.setItem(SETTINGS,JSON.stringify(defaults))}catch(e){}calculate()});
+function download(filename,content,type){const blob=new Blob([content],{type});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url)}
+function csvCell(v){let s=String(v??'');if(/^[=+\-@]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"'}
+$('exportCsv').addEventListener('click',()=>{if(!history.length){alert('Belum ada riwayat untuk diekspor.');return}const cols=['savedAt','year','notes','salary','trade','deposit','withdraw','credit','net','ptkp','pkp','tax','afterCredit'];const rows=[cols,...history.map(x=>cols.map(k=>x[k]??''))];download('taxpilot-riwayat.csv','\ufeff'+rows.map(r=>r.map(csvCell).join(',')).join('\r\n'),'text/csv;charset=utf-8;')});
+$('exportJson').addEventListener('click',()=>{if(!history.length){alert('Belum ada riwayat untuk dicadangkan.');return}download('taxpilot-backup.json',JSON.stringify({version:1,exportedAt:new Date().toISOString(),history},null,2),'application/json')});
+$('print').addEventListener('click',()=>window.print());
+$('deleteAll').addEventListener('click',()=>{if(confirm('Yakin hapus seluruh riwayat pada browser ini? Tindakan ini tidak dapat dibatalkan.')){history=[];saveHistory()}});
+loadSettings();
+// Add custom PTKP choice if not present
+const opt=document.createElement('option');opt.value='custom';opt.textContent='PTKP kustom — atur di Pengaturan pajak';$('ptkp').appendChild(opt);
+calculate();renderHistory();
+</script>
+</body></html>
